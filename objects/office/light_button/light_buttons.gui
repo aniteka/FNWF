@@ -1,4 +1,4 @@
-script: "/objects/office/doors/light_button/light_buttons.gui_script"
+script: "/objects/office/light_button/light_buttons.gui_script"
 background_color {
   x: 0.0
   y: 0.0

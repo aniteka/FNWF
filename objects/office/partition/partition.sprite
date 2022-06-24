@@ -1,0 +1,4 @@
+tile_set: "/objects/office/partition/partition.atlas"
+default_animation: "nothing"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

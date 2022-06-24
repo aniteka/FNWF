@@ -1,7 +1,5 @@
 function init(self)
     msg.post(".", "acquire_input_focus")
-
-    office_sprite_init()
 end
 
 function final(self)
@@ -23,13 +21,3 @@ function on_reload(self)
 end
 
 
-
-
-function office_sprite_init() 
-    local w, h =  window.get_size()
-    local spr = go.get("#office_sprite", "size")
-    vec = go.get_scale(".")
-    vec.x = w / spr.x
-    vec.y = h / spr.y
-    go.set(".", "scale", vec)
-end

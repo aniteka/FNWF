@@ -17,8 +17,8 @@ components {
   id: "right_door"
   component: "/objects/office/doors/right_door.sprite"
   position {
-    x: 1880.0
-    y: 34.0
+    x: 10080.0
+    y: -4.411
     z: 0.0
   }
   rotation {

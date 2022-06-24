@@ -1,6 +1,6 @@
 components {
-  id: "light_buttons"
-  component: "/objects/office/doors/light_button/light_buttons.gui"
+  id: "vent"
+  component: "/objects/office/vent/vent.sprite"
   position {
     x: 0.0
     y: 0.0

@@ -2,6 +2,10 @@ images {
   image: "/asset/office/door/door_nothing.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
+images {
+  image: "/asset/office/door/\321\204\320\273\320\276\320\277\320\277\320\260_\321\203_\320\262\321\226\320\264\321\200\321\226.png"
+  sprite_trim_mode: SPRITE_TRIM_MODE_OFF
+}
 margin: 0
 extrude_borders: 2
 inner_padding: 0

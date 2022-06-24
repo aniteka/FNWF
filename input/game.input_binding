@@ -1,3 +1,7 @@
+key_trigger {
+  input: KEY_SPACE
+  action: "vent_light"
+}
 mouse_trigger {
   input: MOUSE_BUTTON_LEFT
   action: "touch"

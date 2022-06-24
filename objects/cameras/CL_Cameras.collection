@@ -1,0 +1,42 @@
+name: "default"
+instances {
+  id: "cameras"
+  prototype: "/objects/cameras/cameras.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.28
+    y: 0.96
+    z: 1.0
+  }
+}
+instances {
+  id: "cameras_buttons"
+  prototype: "/objects/cameras/cameras_buttons/cameras_buttons.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+scale_along_z: 0
