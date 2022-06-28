@@ -19,7 +19,7 @@ function on_input(self, action_id, action)
         end
         for key, val in ipairs(cam_buttons) do
             if gui.pick_node(val, action.x, action.y) and action.pressed then
-                print(key)
+                msg.post("/rooms#rooms", "change_camera", {cam_number = key;})
             end
         end
     end

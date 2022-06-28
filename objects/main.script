@@ -4,7 +4,12 @@ cameras_load = false
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
-	msg.post("/script#Office", "load")
+	msg.post("/scripts#Office", "load")
+	msg.post("/scripts#Office", "init")
+	msg.post("/scripts#Office", "enable")
+	
+	msg.post("/scripts#Cameras", "load")
+	msg.post("/scripts#Cameras", "init")
 end
 
 function final(self)
@@ -14,29 +19,19 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("proxy_loaded") then	
-		msg.post(sender, "init")
-		msg.post(sender, "enable")
-	end
+
 end
 
 function on_input(self, action_id, action)
 	if action_id == ud_camera and action.pressed then
 		if cameras_load then
 			cameras_load = false
-			msg.post("/script#Cameras", "disable")
-			msg.post("/script#Cameras", "final")
-			msg.post("/script#Cameras", "unload")
-
-			msg.post("/script#Office", "load")
+			msg.post("/scripts#Cameras", "disable")
+			msg.post("/scripts#Office", "enable")
 		else
 			cameras_load = true
-			
-			msg.post("/script#Office", "disable")
-			msg.post("/script#Office", "final")
-			msg.post("/script#Office", "unload")
-
-			msg.post("/script#Cameras", "load")
+			msg.post("/scripts#Office", "disable")
+			msg.post("/scripts#Cameras", "enable")
 		end
 	end
 end

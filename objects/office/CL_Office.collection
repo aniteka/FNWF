@@ -20,7 +20,7 @@ instances {
   }
 }
 instances {
-  id: "office1"
+  id: "office"
   prototype: "/objects/office/office.go"
   position {
     x: 0.0

@@ -1,17 +1,47 @@
+prev_camera = 1
+
 function init(self)
+	sprite.set_hflip("/fib2#floppa_in_bucket", true)
+
+	msg.post("main:/scripts#floppa_in_bucket", "get_floppa_in_bucket_way_point")
 end
 
 function final(self)
 end
 
+i = 0
 function update(self, dt)
-end
-
-function fixed_update(self, dt)
+	if i > 1 then
+		msg.post("main:/scripts#floppa_in_bucket", "get_floppa_in_bucket_way_point")
+		i = 0
+	else
+		i = i + dt
+	end
 end
 
 function on_message(self, message_id, message, sender)
+	if message_id == hash("change_camera") then
+		local vec_prev = go.get("/r"..prev_camera, "position")
+		vec_prev.z = -10
+		go.set("/r"..prev_camera, "position", vec_prev)
 
+		local vec_sender = go.get("/r"..message.cam_number, "position")
+		vec_sender.z = 0
+		go.set("/r"..message.cam_number, "position", vec_sender)
+
+		prev_camera = message.cam_number
+
+		msg.post("main:/scripts#floppa_in_bucket", "get_floppa_in_bucket_way_point")
+
+	elseif message_id == hash("way_point") then
+		if message.way_point == prev_camera then
+			msg.post(message.sprite_name..prev_camera, "enable")
+		else
+			msg.post(message.sprite_name..prev_camera, "disable")
+		end 
+	end
+
+	
 end
 
 function on_input(self, action_id, action)
@@ -19,3 +49,4 @@ end
 
 function on_reload(self)
 end
+

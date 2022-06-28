@@ -1,4 +1,4 @@
 tile_set: "/objects/cameras/rooms/2/room2.atlas"
-default_animation: "\321\204\320\273\320\276\320\277\320\277\320\260_\321\203_\320\262\321\226\320\264\321\200\321\226"
+default_animation: "floppa_in_bucket"
 material: "/builtins/materials/sprite.material"
 blend_mode: BLEND_MODE_ALPHA

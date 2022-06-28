@@ -1,0 +1,23 @@
+local fib_way = {1,2,5,7,0}
+local fib_way_point_index = 1
+
+function get_floppa_in_bucket_way_point()
+	return fib_way[fib_way_point_index]
+end
+
+function init(self)
+
+end
+
+
+function update(self, dt)
+	if math.random(0, 600) == 1 then
+		fib_way_point_index = fib_way_point_index + 1
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("get_floppa_in_bucket_way_point") then
+		msg.post(sender, "way_point", {sprite_name = "fib";way_point = get_floppa_in_bucket_way_point()})
+	end	
+end
