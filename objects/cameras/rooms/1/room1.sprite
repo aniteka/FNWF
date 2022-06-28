@@ -1,0 +1,4 @@
+tile_set: "/objects/cameras/rooms/1/room1.atlas"
+default_animation: "1"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

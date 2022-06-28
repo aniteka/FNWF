@@ -14,20 +14,20 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("left_door_light_press") then
-		msg.post("#left_partition", "disable")
+		msg.post("/partition#left_partition", "disable")
 	elseif message_id == hash("right_door_light_press") then
-		msg.post("#right_partition", "disable")
+		msg.post("/partition#right_partition", "disable")
 	elseif message_id == hash("light_released") then 
-		msg.post("#left_partition", "enable")
-		msg.post("#right_partition", "enable")
+		msg.post("/partition#left_partition", "enable")
+		msg.post("/partition#right_partition", "enable")
 	end
 end
 
 function on_input(self, action_id, action)
 	if action_id == hash("vent_light") and action.pressed then
-		msg.post("#vent_partition", "disable")
+		msg.post("/partition#vent_partition", "disable")
 	elseif action_id == hash("vent_light") and action.released then
-		msg.post("#vent_partition", "enable")
+		msg.post("/partition#vent_partition", "enable")
 	end
 end
 

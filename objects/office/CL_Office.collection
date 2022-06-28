@@ -1,6 +1,26 @@
-name: "default"
+name: "office"
 instances {
-  id: "office"
+  id: "light_buttons"
+  prototype: "/objects/office/light_button/light_buttons.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "office1"
   prototype: "/objects/office/office.go"
   position {
     x: 0.0
@@ -20,12 +40,12 @@ instances {
   }
 }
 instances {
-  id: "after_door"
-  prototype: "/objects/office/doors/after_door.go"
+  id: "partition"
+  prototype: "/objects/office/partition/partition.go"
   position {
-    x: 153.0
-    y: 277.0
-    z: -1.0
+    x: -410.0
+    y: -121.0
+    z: 0.0
   }
   rotation {
     x: 0.0
@@ -34,28 +54,8 @@ instances {
     w: 1.0
   }
   scale3 {
-    x: 0.095
-    y: 0.755
-    z: 1.0
-  }
-}
-instances {
-  id: "light_buttons"
-  prototype: "/objects/office/light_button/light_buttons.go"
-  position {
-    x: 0.0
-    y: 0.0
-    z: 2.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
+    x: 0.392
+    y: 0.955
     z: 1.0
   }
 }
@@ -80,12 +80,12 @@ instances {
   }
 }
 instances {
-  id: "partition"
-  prototype: "/objects/office/partition/partition.go"
+  id: "after_door"
+  prototype: "/objects/office/doors/after_door.go"
   position {
-    x: -410.0
-    y: -121.0
-    z: 0.0
+    x: 132.0
+    y: 89.0
+    z: -1.0
   }
   rotation {
     x: 0.0
@@ -94,8 +94,8 @@ instances {
     w: 1.0
   }
   scale3 {
-    x: 0.392
-    y: 0.955
+    x: 0.133
+    y: 0.762
     z: 1.0
   }
 }

@@ -1,9 +1,9 @@
 images {
-  image: "/asset/office/door/door_nothing.png"
+  image: "/asset/office/door/floppa_in_bucket.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 images {
-  image: "/asset/office/door/floppa_in_bucket.png"
+  image: "/asset/rooms/2.png"
   sprite_trim_mode: SPRITE_TRIM_MODE_OFF
 }
 margin: 0

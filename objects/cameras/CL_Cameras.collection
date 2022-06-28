@@ -1,11 +1,11 @@
-name: "default"
+name: "cameras"
 instances {
   id: "cameras"
   prototype: "/objects/cameras/cameras.go"
   position {
     x: 0.0
     y: 0.0
-    z: 0.0
+    z: 1.0
   }
   rotation {
     x: 0.0
@@ -40,3 +40,95 @@ instances {
   }
 }
 scale_along_z: 0
+embedded_instances {
+  id: "rooms"
+  children: "r1"
+  data: ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: -1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "r1"
+  children: "floppa_in_bucket"
+  data: "components {\n"
+  "  id: \"room1\"\n"
+  "  component: \"/objects/cameras/rooms/1/room1.sprite\"\n"
+  "  position {\n"
+  "    x: 512.0\n"
+  "    y: 375.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.244
+    y: 0.962
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "floppa_in_bucket"
+  data: "components {\n"
+  "  id: \"\\321\\204\\320\\273\\320\\276\\320\\277\\320\\277\\320\\260_\\321\\203_\\320\\262\\321\\226\\320\\264\\321\\200\\321\\226\"\n"
+  "  component: \"/objects/cameras/rooms/1/floppa_in_bucket.sprite\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 290.312
+    y: 308.472
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.33
+    y: 0.59
+    z: 1.0
+  }
+}

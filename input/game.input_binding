@@ -1,6 +1,10 @@
 key_trigger {
-  input: KEY_SPACE
+  input: KEY_LSHIFT
   action: "vent_light"
+}
+key_trigger {
+  input: KEY_SPACE
+  action: "updown_camera"
 }
 mouse_trigger {
   input: MOUSE_BUTTON_LEFT
