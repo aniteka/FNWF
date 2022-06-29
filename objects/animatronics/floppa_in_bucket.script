@@ -1,3 +1,4 @@
+---@type number[] Array of cameras for floppa in bucket
 local fib_way = {1,2,5,7,0}
 local fib_way_point_index = 1
 
@@ -5,19 +6,25 @@ function get_floppa_in_bucket_way_point()
 	return fib_way[fib_way_point_index]
 end
 
-function init(self)
-
-end
-
-
+--TODO AI
+local i = 0
 function update(self, dt)
-	if math.random(0, 600) == 1 then
-		fib_way_point_index = fib_way_point_index + 1
+	i = i + dt
+	if i > 4 then
+		if math.random(0, 5000) == 1 then
+			fib_way_point_index = fib_way_point_index + 1
+			i = 0
+		end
 	end
 end
 
+---@author After receiving "get_floppa_in_bucket_way_point" message,
+---through "way_point" message to the sender
 function on_message(self, message_id, message, sender)
 	if message_id == hash("get_floppa_in_bucket_way_point") then
-		msg.post(sender, "way_point", {sprite_name = "fib";way_point = get_floppa_in_bucket_way_point()})
-	end	
+		msg.post(sender, "way_point", {
+					sprite_name = "fib";
+					way_point = get_floppa_in_bucket_way_point();
+		})
+	end
 end

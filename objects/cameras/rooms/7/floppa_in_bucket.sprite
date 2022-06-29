@@ -1,0 +1,4 @@
+tile_set: "/objects/cameras/rooms/7/room7.atlas"
+default_animation: "floppa7"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

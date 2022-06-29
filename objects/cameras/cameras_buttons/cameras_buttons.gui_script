@@ -2,28 +2,22 @@ function init(self)
     msg.post(".", "acquire_input_focus")
 end
 
-function final(self)
-end
-
-function update(self, dt)
-end
-
-function on_message(self, message_id, message, sender)
-end
-
 function on_input(self, action_id, action)
     if action_id == hash("touch") then
+        ---@type table[] Array of Buttons Node
         cam_buttons = {}
+
+        -- Pick up all buttons
         while #cam_buttons ~= 8 do
             cam_buttons[#cam_buttons + 1] = gui.get_node("CAM_"..(#cam_buttons + 1))
         end
+
+        -- Touch checking of all buttons
         for key, val in ipairs(cam_buttons) do
             if gui.pick_node(val, action.x, action.y) and action.pressed then
                 msg.post("/rooms#rooms", "change_camera", {cam_number = key;})
+
             end
         end
     end
-end
-
-function on_reload(self)
 end

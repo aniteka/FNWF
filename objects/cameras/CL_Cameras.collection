@@ -44,6 +44,8 @@ embedded_instances {
   id: "rooms"
   children: "r1"
   children: "r2"
+  children: "r5"
+  children: "r7"
   data: "components {\n"
   "  id: \"rooms\"\n"
   "  component: \"/objects/cameras/rooms/rooms.script\"\n"
@@ -170,7 +172,7 @@ embedded_instances {
   position {
     x: 0.0
     y: 0.0
-    z: -2.0
+    z: -10.0
   }
   rotation {
     x: 0.0
@@ -216,6 +218,148 @@ embedded_instances {
   scale3 {
     x: -0.24
     y: 0.402
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "r5"
+  children: "fib5"
+  data: "components {\n"
+  "  id: \"room5\"\n"
+  "  component: \"/objects/cameras/rooms/5/room5.sprite\"\n"
+  "  position {\n"
+  "    x: 500.0\n"
+  "    y: 375.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: -10.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.285
+    y: 0.975
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "fib5"
+  data: "components {\n"
+  "  id: \"floppa_in_bucket\"\n"
+  "  component: \"/objects/cameras/rooms/5/floppa_in_bucket.sprite\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 586.77
+    y: 451.282
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.192
+    y: 0.269
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "r7"
+  children: "fib7"
+  data: "components {\n"
+  "  id: \"room7\"\n"
+  "  component: \"/objects/cameras/rooms/7/room7.sprite\"\n"
+  "  position {\n"
+  "    x: 500.163\n"
+  "    y: 375.385\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: -10.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.285
+    y: 0.975
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "fib7"
+  data: "components {\n"
+  "  id: \"floppa_in_bucket\"\n"
+  "  component: \"/objects/cameras/rooms/7/floppa_in_bucket.sprite\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 490.272
+    y: 343.59
+    z: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.815
+    y: 1.039
     z: 1.0
   }
 }
