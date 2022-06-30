@@ -2,23 +2,29 @@
 local fib_way = {1,2,5,7,0}
 local fib_way_point_index = 1
 local fib_hard_changer_values = {
-	[1] = {seconds = 5; random_max = 1000;}
+	["test"] = {seconds = 4; random_max = 2;};
+	[1] = {seconds = 5; random_max = 1000;};
 }
+hard_value = "test"
 
 function get_floppa_in_bucket_way_point()
 	return fib_way[fib_way_point_index]
 end
 
---TODO AI
 local i = 0
 function update(self, dt)
 	i = i + dt
-	if i > fib_hard_changer_values[1].seconds then
-		if math.random(0, fib_hard_changer_values[1].random_max) == 1 then
+	if i > fib_hard_changer_values[hard_value].seconds then
+		if math.random(0, fib_hard_changer_values[hard_value].random_max) == 1 then
 			fib_way_point_index = fib_way_point_index + 1
-			send_way_point_to_cameras_rooms_script()
-			print(fib_way_point_index)
 			i = 0
+
+			if get_floppa_in_bucket_way_point() == nil then 	send_message_to_main_play_jumpscare()
+			elseif get_floppa_in_bucket_way_point() == 0 then 	send_message_to_offices_doors()
+			end
+			send_way_point_to_cameras_rooms_script()
+
+			print(fib_way_point_index)
 		end
 	end
 end
@@ -39,4 +45,13 @@ function send_way_point_to_cameras_rooms_script()
 		sprite_name = "fib";
 		way_point = get_floppa_in_bucket_way_point();
 	})
+end
+
+--TODO BUG - floppa dont removing after jumpscar
+function send_message_to_offices_doors()
+	sprite.play_flipbook("office:/after_door#left_door", "floppa_in_bucket")
+end
+
+function send_message_to_main_play_jumpscare()
+	msg.post("/scripts#main", "play_jumpscare", {sprite_name = "floppa_in_bucket"})
 end

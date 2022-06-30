@@ -2,20 +2,30 @@ ud_camera = hash("updown_camera")
 
 cameras_load = false
 
+jumpscare_settings = {
+	duration = 0.5;
+	pos_add = -350;
+	scale_mul = 4;
+}
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	initCollections()
 	msg.post("/jumpscare", "disable")
+
 end
 
 function final(self)
+	
 end
 
 function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-
+	if message_id == hash("play_jumpscare") then
+		play_jumpscare(message.sprite_name)
+	end
 end
 
 function on_input(self, action_id, action)
@@ -43,4 +53,29 @@ function initCollections()
 
 	msg.post("/scripts#Cameras", "load")
 	msg.post("/scripts#Cameras", "init")
+end
+
+function play_jumpscare(sprite_name)
+	msg.post("/jumpscare", "enable")
+	sprite.play_flipbook("/jumpscare#jumpscare", sprite_name)
+	local pos_y_to = go.get("/jumpscare", "position.y") + jumpscare_settings.pos_add
+	go.animate(
+			"/jumpscare",
+			"position.y",
+			go.PLAYBACK_ONCE_FORWARD,
+			pos_y_to,
+			go.EASING_INBACK,
+			jumpscare_settings.duration)
+
+	local scale_to = go.get("/jumpscare", "scale")
+	scale_to.x = scale_to.x * jumpscare_settings.scale_mul
+	scale_to.y = scale_to.y * jumpscare_settings.scale_mul
+	scale_to.z = scale_to.z * jumpscare_settings.scale_mul
+	go.animate(
+			"/jumpscare",
+			"scale",
+			go.PLAYBACK_ONCE_FORWARD,
+			scale_to,
+			go.EASING_OUTSINE,
+			jumpscare_settings.duration)
 end

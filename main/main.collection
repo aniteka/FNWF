@@ -86,13 +86,13 @@ embedded_instances {
   "  id: \"jumpscare\"\n"
   "  type: \"sprite\"\n"
   "  data: \"tile_set: \\\"/objects/animatronics/jumpscare.atlas\\\"\\n"
-  "default_animation: \\\"nothing\\\"\\n"
+  "default_animation: \\\"floppa_in_bucket\\\"\\n"
   "material: \\\"/builtins/materials/sprite.material\\\"\\n"
   "blend_mode: BLEND_MODE_ALPHA\\n"
   "\"\n"
   "  position {\n"
-  "    x: 500.0\n"
-  "    y: 375.0\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
   "    z: 0.0\n"
   "  }\n"
   "  rotation {\n"
@@ -104,9 +104,9 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 0.0
-    y: 0.0
-    z: 1.0
+    x: 640.0
+    y: 480.0
+    z: 0.91
   }
   rotation {
     x: 0.0
@@ -115,8 +115,8 @@ embedded_instances {
     w: 1.0
   }
   scale3 {
-    x: 1.28
-    y: 0.96
+    x: 0.245
+    y: 0.297
     z: 1.0
   }
 }
