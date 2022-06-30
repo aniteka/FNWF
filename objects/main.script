@@ -4,12 +4,8 @@ cameras_load = false
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
-	msg.post("/scripts#Office", "load")
-	msg.post("/scripts#Office", "init")
-	msg.post("/scripts#Office", "enable")
-	
-	msg.post("/scripts#Cameras", "load")
-	msg.post("/scripts#Cameras", "init")
+	initCollections()
+	msg.post("/jumpscare", "disable")
 end
 
 function final(self)
@@ -34,4 +30,17 @@ function on_input(self, action_id, action)
 			msg.post("/scripts#Cameras", "enable")
 		end
 	end
+end
+
+
+
+
+
+function initCollections()
+	msg.post("/scripts#Office", "load")
+	msg.post("/scripts#Office", "init")
+	msg.post("/scripts#Office", "enable")
+
+	msg.post("/scripts#Cameras", "load")
+	msg.post("/scripts#Cameras", "init")
 end

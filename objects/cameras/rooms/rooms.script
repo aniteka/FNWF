@@ -7,14 +7,7 @@ function init(self)
 	check_animatronics_existing()
 end
 
--- Every second check animatronics state
-i = 0
 function update(self, dt)
-	if i > 1 then
-		check_animatronics_existing()
-		i = 0
-	else i = i + dt
-	end
 end
 
 function on_message(self, message_id, message, sender)
@@ -56,5 +49,5 @@ end
 
 ---@author Check animatronics existing in this camera
 function check_animatronics_existing()
-	msg.post("main:/scripts#floppa_in_bucket", "get_floppa_in_bucket_way_point")
+	msg.post("main:/scripts#floppa_in_bucket", "get_way_point")
 end
