@@ -20,8 +20,8 @@ function update(self, dt)
 			i = 0
 
 			if get_floppa_in_bucket_way_point() == nil then 	send_message_to_main_play_jumpscare()
-			elseif get_floppa_in_bucket_way_point() == 0 then 	send_message_to_offices_doors()
 			end
+			send_message_to_offices_doors()
 			send_way_point_to_cameras_rooms_script()
 
 			print(fib_way_point_index)
@@ -33,10 +33,11 @@ end
 ---through "way_point" message to the sender
 function on_message(self, message_id, message, sender)
 	if message_id == hash("get_way_point") then
-		msg.post(sender, "way_point", {
-					sprite_name = "fib";
-					way_point = get_floppa_in_bucket_way_point();
-		})
+		send_way_point_to_cameras_rooms_script()
+	end
+
+	if message_id == hash("mask_used") then
+		fib_way_point_index = 1
 	end
 end
 
@@ -47,9 +48,12 @@ function send_way_point_to_cameras_rooms_script()
 	})
 end
 
---TODO BUG - floppa dont removing after jumpscar
 function send_message_to_offices_doors()
-	sprite.play_flipbook("office:/after_door#left_door", "floppa_in_bucket")
+	if get_floppa_in_bucket_way_point() == 0 then
+		sprite.play_flipbook("office:/after_door#left_door", "floppa_in_bucket")
+	else
+		sprite.play_flipbook("office:/after_door#left_door", "door_nothing")
+	end
 end
 
 function send_message_to_main_play_jumpscare()

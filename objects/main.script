@@ -1,6 +1,7 @@
 ud_camera = hash("updown_camera")
 
-cameras_load = false
+local cameras_load = false
+local mask_putted = false
 
 jumpscare_settings = {
 	duration = 0.5;
@@ -20,6 +21,7 @@ function final(self)
 end
 
 function update(self, dt)
+
 end
 
 function on_message(self, message_id, message, sender)
@@ -30,16 +32,18 @@ end
 
 function on_input(self, action_id, action)
 	if action_id == ud_camera and action.pressed then
-		if cameras_load then
-			cameras_load = false
-			msg.post("/scripts#Cameras", "disable")
-			msg.post("/scripts#Office", "enable")
-		else
+		if not cameras_load and not mask_putted then
 			cameras_load = true
 			msg.post("/scripts#Office", "disable")
 			msg.post("/scripts#Cameras", "enable")
+		elseif cameras_load and not mask_putted then
+			cameras_load = false
+			msg.post("/scripts#Cameras", "disable")
+			msg.post("/scripts#Office", "enable")
 		end
 	end
+
+	if not action_id then put_on_mask(action.y) end
 end
 
 
@@ -56,6 +60,10 @@ function initCollections()
 end
 
 function play_jumpscare(sprite_name)
+	if mask_putted then
+		msg.post("/scripts#floppa_in_bucket", "mask_used")
+		return
+	end
 	msg.post("/jumpscare", "enable")
 	sprite.play_flipbook("/jumpscare#jumpscare", sprite_name)
 	local pos_y_to = go.get("/jumpscare", "position.y") + jumpscare_settings.pos_add
@@ -78,4 +86,30 @@ function play_jumpscare(sprite_name)
 			scale_to,
 			go.EASING_OUTSINE,
 			jumpscare_settings.duration)
+end
+
+local prev_pos = 1000
+---@param mouse_y_pos number
+function put_on_mask(mouse_y_pos)
+	local _,window_y = window.get_size()
+	if mouse_y_pos < window_y / 10 and prev_pos >= window_y / 10 then
+		if not mask_putted and not cameras_load then
+			go.animate(	"/puted_on_musk",
+					"position.y",
+					go.PLAYBACK_ONCE_FORWARD,
+					0,
+					go.EASING_LINEAR,
+					0.1)
+			mask_putted = not mask_putted
+		elseif mask_putted and not cameras_load then
+			go.animate(	"/puted_on_musk",
+					"position.y",
+					go.PLAYBACK_ONCE_FORWARD,
+					1000,
+					go.EASING_LINEAR,
+					0.1)
+			mask_putted = not mask_putted
+		end
+	end
+	prev_pos = mouse_y_pos
 end
