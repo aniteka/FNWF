@@ -38,7 +38,7 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("new_game") then
 		start_new_game()
 	elseif message_id == hash("options_for_game") then
-		options()
+		options_of_game()
 	elseif message_id == hash("exit_from_game") then
 		exit_from_game()
 	end
@@ -175,7 +175,7 @@ function start_new_game()
 	init_collections()
 end
 
-function options()
+function options_of_game()
 
 end
 

@@ -1,3 +1,9 @@
+local buttons_input = require("/scripts/buttons_input")
+local default_button_color      = vmath.vector3(1,1,1)
+local hover_button_color        = vmath.vector3(0.6,0.6,0.6)
+local click_button_color        = vmath.vector3(0,0.6,0)
+
+
 function init(self)
     msg.post(".", "acquire_input_focus")
 end
@@ -12,28 +18,51 @@ function on_message(self, message_id, message, sender)
 end
 
 function on_input(self, action_id, action)
-    if action_id == hash("touch") then
-        continue = gui.get_node("continue")
-        new_game = gui.get_node("new_game")
-        options = gui.get_node("options")
-        exit = gui.get_node("exit")
+    local continue = gui.get_node("continue")
+    local new_game = gui.get_node("new_game")
+    local options = gui.get_node("options")
+    local exit = gui.get_node("exit")
 
-        if gui.pick_node(continue, action.x, action.y)  and action.pressed then
-            msg.post("main:/scripts#main", "continue_game")
-        elseif gui.pick_node(new_game, action.x, action.y)  and action.pressed then
-            msg.post("main:/scripts#main", "new_game")
-        elseif gui.pick_node(options, action.x, action.y)  and action.pressed then
-            msg.post("main:/scripts#main", "options_for_game")
-        elseif gui.pick_node(exit, action.x, action.y)  and action.pressed then
-            msg.post("main:/scripts#main", "exit_from_game")
-        end
+    -- msg.post("main:/scripts#main", "new_game")
+    -- msg.post("main:/scripts#main", "options_for_game")
+    -- msg.post("main:/scripts#main", "exit_from_game")
 
-        if action.released then
-            msg.post("/partition#partition", "light_released")
+    buttons_input{  action          = action;
+                    callback        = function() msg.post("main:/scripts#main", "continue_game") end;
+                    default_color   = default_button_color;
+                    click_color     = click_button_color;
+                    hover_color     = hover_button_color;
+                    node            = continue;
+                    on_touch        = action_id == hash("touch")}
+
+    buttons_input{  action          = action;
+                    callback        = function() msg.post("main:/scripts#main", "new_game") end;
+                    default_color   = default_button_color;
+                    click_color     = click_button_color;
+                    hover_color     = hover_button_color;
+                    node            = new_game;
+                    on_touch        = action_id == hash("touch")}
+
+    buttons_input{  action          = action;
+                    callback        = function()
+                        sound.play("/menu#buttons_click", {})
+                        msg.post("main:/scripts#main", "options_for_game")
+                    end;
+                    default_color   = default_button_color;
+                    click_color     = click_button_color;
+                    hover_color     = hover_button_color;
+                    node            = options;
+                    on_touch        = action_id == hash("touch")}
+
+    buttons_input{  action          = action;
+                    callback        = function() msg.post("main:/scripts#main", "exit_from_game") end;
+                    default_color   = default_button_color;
+                    click_color     = click_button_color;
+                    hover_color     = hover_button_color;
+                    node            = exit;
+                    on_touch        = action_id == hash("touch")}
 
 
-        end
-    end
 end
 
 function on_reload(self)
