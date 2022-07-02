@@ -2,10 +2,15 @@ local buttons_input = require("/scripts/buttons_input")
 local default_button_color      = vmath.vector3(1,1,1)
 local hover_button_color        = vmath.vector3(0.6,0.6,0.6)
 local click_button_color        = vmath.vector3(0,0.6,0)
+local night_save_name = "night.floppa_saves"
 
 
 function init(self)
     msg.post(".", "acquire_input_focus")
+
+    local continue_text = gui.get_node("continue_t")
+    local night = sys.load(night_save_name).night or 0
+    gui.set_text(continue_text, "NIGHT "..night)
 end
 
 function final(self)

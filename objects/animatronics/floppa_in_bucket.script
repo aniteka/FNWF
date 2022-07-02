@@ -2,27 +2,47 @@
 local fib_way = {1,2,5,7,0}
 local fib_way_point_index = 1
 local fib_hard_changer_values = {
-	["test"] = {seconds = 4; random_max = 2;};
-	[1] = {seconds = 5; random_max = 1000;};
+	[0] = {seconds = 1; 	random_max = 2;		after_door_wait = 5;};
+	[1] = {seconds = 30; 	random_max = 400; 	after_door_wait = 10;};
+	[2] = {seconds = 10; 	random_max = 4000;	after_door_wait = 6;};
+	[3] = {seconds = 10; 	random_max = 1000;	after_door_wait = 5;};
+	[4] = {seconds = 6; 	random_max = 600;	after_door_wait = 5;};
+	[5] = {seconds = 3; 	random_max = 1000;	after_door_wait = 4;};
 }
-hard_value = "test"
+local hard_value = 0
+local night_save_name = "night.floppa_saves"
 
 function get_floppa_in_bucket_way_point()
 	return fib_way[fib_way_point_index]
 end
 
+function init(self)
+	hard_value = sys.load(night_save_name).night or 0
+end
+
 local i = 0
 function update(self, dt)
+
 	i = i + dt
+	if fib_way[fib_way_point_index] == 0 then
+		if i > fib_hard_changer_values[hard_value].after_door_wait then
+			fib_way_point_index = fib_way_point_index + 1
+			i = 0
+
+			move_next_camera()
+
+			print(fib_way_point_index)
+		else
+			return
+		end
+	end
+
 	if i > fib_hard_changer_values[hard_value].seconds then
 		if math.random(0, fib_hard_changer_values[hard_value].random_max) == 1 then
 			fib_way_point_index = fib_way_point_index + 1
 			i = 0
 
-			if get_floppa_in_bucket_way_point() == nil then 	send_message_to_main_play_jumpscare()
-			end
-			send_message_to_offices_doors()
-			send_way_point_to_cameras_rooms_script()
+			move_next_camera()
 
 			print(fib_way_point_index)
 		end
@@ -58,4 +78,11 @@ end
 
 function send_message_to_main_play_jumpscare()
 	msg.post("main:/scripts#main", "play_jumpscare", {sprite_name = "floppa_in_bucket"})
+end
+
+function move_next_camera()
+	if get_floppa_in_bucket_way_point() == nil then 	send_message_to_main_play_jumpscare()
+	end
+	send_message_to_offices_doors()
+	send_way_point_to_cameras_rooms_script()
 end

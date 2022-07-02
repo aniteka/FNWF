@@ -3,7 +3,9 @@ ud_camera = hash("updown_camera")
 local cameras_load = false
 local mask_putted = false
 local in_menu = true
+local time_multiply = 2
 local time_from_game_start = 0
+local night_save_name = "night.floppa_saves"
 
 jumpscare_settings = {
 	duration = 0.5;
@@ -16,6 +18,7 @@ function init(self)
 	msg.post("/jumpscare", "disable")
 	msg.post("/puted_on_musk", "disable")
 	msg.post("/timer", "disable")
+	check_of_saves()
 
 	msg.post("/scripts#Menu", "load")
 	msg.post("/scripts#Menu", "init")
@@ -27,7 +30,7 @@ function final(self)
 end
 
 function update(self, dt)
-	timer_update(dt)
+	timer_update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
@@ -164,6 +167,8 @@ function back_to_menu()
 	msg.post("/puted_on_musk", "disable")
 	msg.post("/timer", "disable")
 
+	msg.post("/scripts#Menu", "load")
+	msg.post("/scripts#Menu", "init")
 	msg.post("/scripts#Menu", "enable")
 	in_menu = true
 end
@@ -179,7 +184,7 @@ function start_new_game()
 	msg.post("/puted_on_musk", "enable")
 	msg.post("/timer", "enable")
 
-	msg.post("/scripts#Menu", "disable")
+	msg.post("/scripts#Menu", "unload")
 	init_collections()
 end
 
@@ -191,21 +196,39 @@ function exit_from_game()
 	sys.exit(0)
 end
 
-function timer_update(dt)
+function timer_update(self, dt)
 	if not in_menu then
 		time_from_game_start = time_from_game_start + dt
 
-		if math.floor(time_from_game_start) % 2 == 0 then
+		local hours = math.floor(time_from_game_start / 60 * time_multiply)
+		local minutes_first = math.floor(time_from_game_start * time_multiply / 10) % 6
+		local minutes_second = math.floor(
+				time_from_game_start * time_multiply - math.floor(time_from_game_start * time_multiply / 10) * 10
+		)
+		self.prev_minutes_second = self.prev_minutes_second or 0
+
+		if self.prev_minutes_second ~= minutes_second then
 			label.set_text("/timer#timer", ("%d%d:%d%d"):format(
 					0,
-					math.floor(time_from_game_start / 60 / 2),
-					math.floor(time_from_game_start / 2 / 10) % 6,
-					math.floor(time_from_game_start / 2 - math.floor(time_from_game_start / 2 / 10) * 10)
+					hours,
+					minutes_first,
+					minutes_second
 			))
+			self.prev_minutes_second = minutes_second
 		end
 
-		if math.floor(time_from_game_start / 60 / 2) == 6 then
+		if hours == 6 then
+			local night = sys.load(night_save_name).night
+			if night == 5 then night = 4 end
+			sys.save(night_save_name, {night = night + 1})
 			back_to_menu()
 		end
+	end
+end
+
+function check_of_saves()
+	if not sys.load(night_save_name).night then
+		sys.save(night_save_name, {night = 1})
+		print("Work")
 	end
 end
