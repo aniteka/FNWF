@@ -45,7 +45,7 @@ function on_input(self, action_id, action)
 
     buttons_input{  action          = action;
                     callback        = function()
-                        sound.play("/menu#buttons_click", {})
+                        -- sound.play("/menu#buttons_click", {})
                         msg.post("main:/scripts#main", "options_for_game")
                     end;
                     default_color   = default_button_color;
