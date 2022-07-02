@@ -57,5 +57,5 @@ function send_message_to_offices_doors()
 end
 
 function send_message_to_main_play_jumpscare()
-	msg.post("/scripts#main", "play_jumpscare", {sprite_name = "floppa_in_bucket"})
+	msg.post("main:/scripts#main", "play_jumpscare", {sprite_name = "floppa_in_bucket"})
 end

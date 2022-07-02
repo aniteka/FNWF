@@ -49,5 +49,5 @@ end
 
 ---@author Check animatronics existing in this camera
 function check_animatronics_existing()
-	msg.post("main:/scripts#floppa_in_bucket", "get_way_point")
+	msg.post("animatronics:/animatronics#floppa_in_bucket", "get_way_point")
 end

@@ -1,0 +1,40 @@
+function init(self)
+    msg.post(".", "acquire_input_focus")
+end
+
+function final(self)
+end
+
+function update(self, dt)
+end
+
+function on_message(self, message_id, message, sender)
+end
+
+function on_input(self, action_id, action)
+    if action_id == hash("touch") then
+        continue = gui.get_node("continue")
+        new_game = gui.get_node("new_game")
+        options = gui.get_node("options")
+        exit = gui.get_node("exit")
+
+        if gui.pick_node(continue, action.x, action.y)  and action.pressed then
+            msg.post("main:/scripts#main", "continue_game")
+        elseif gui.pick_node(new_game, action.x, action.y)  and action.pressed then
+            msg.post("main:/scripts#main", "new_game")
+        elseif gui.pick_node(options, action.x, action.y)  and action.pressed then
+            msg.post("main:/scripts#main", "options_for_game")
+        elseif gui.pick_node(exit, action.x, action.y)  and action.pressed then
+            msg.post("main:/scripts#main", "exit_from_game")
+        end
+
+        if action.released then
+            msg.post("/partition#partition", "light_released")
+
+
+        end
+    end
+end
+
+function on_reload(self)
+end
