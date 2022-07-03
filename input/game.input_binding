@@ -1,10 +1,18 @@
 key_trigger {
-  input: KEY_LSHIFT
+  input: KEY_W
   action: "vent_light"
 }
 key_trigger {
   input: KEY_SPACE
   action: "updown_camera"
+}
+key_trigger {
+  input: KEY_A
+  action: "left_door_light"
+}
+key_trigger {
+  input: KEY_D
+  action: "right_door_light"
 }
 mouse_trigger {
   input: MOUSE_BUTTON_LEFT
