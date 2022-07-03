@@ -1,19 +1,18 @@
-# Welcome to Defold
+<h1 align="center">Five Night With Floppa</h1>
+<a href="https://gamejolt.com/games/fnwf/730561" title="Play on Game Jolt"><img style="position: absolute; top: 0; left: 0; border: 0;" src="http://s.gjcdn.net/img/ribbons/play-green-left-1.png" alt="Play on Game Jolt"></a>
 
-This project was created from the "desktop" project template. This means that the settings in ["game.project"](defold://open?path=/game.project) have been changed to be suitable for a desktop game:
+A Floppa version of [Five Nights at Freddy's](https://store.steampowered.com/app/319510/Five_Nights_at_Freddys/?l=polish)<br>
+It was made using Defold and Lua
 
-- The screen size is set to 1280x720
-- Projection is set to Fixed Fit
-- macOS and Windows icons are set
-- Mouse clicks are bound to action "touch"
-- A simple script in a game object is set up to receive and react to input
+### VERSION 0.1
+- Menu
+- Nights 
+- Animatronic: Floppa in Bucket
+- Cameras(1,2,5,7)
+- Mask 
 
-[Build and run](defold://build) to see it in action. You can of course alter these settings to fit your needs.
+~ Link: https://gamejolt.com/games/fnwf/730561
 
-Check out [the documentation pages](https://defold.com/learn) for examples, tutorials, manuals and API docs.
+> [Video](https://twitter.com/i/status/1543339253740015619)
 
-If you run into trouble, help is available in [our forum](https://forum.defold.com).
-
-Happy Defolding!
-
----
+> ![Defold](https://raw.githubusercontent.com/defold/assets-defold/master/assets-defold/made_with_defold/logo-hor-classic-dark-160.png)

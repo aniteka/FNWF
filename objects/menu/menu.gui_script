@@ -1,4 +1,4 @@
-local buttons_input = require("/scripts/buttons_input")
+local buttons_input = require("scripts/buttons_input")
 local default_button_color      = vmath.vector3(1,1,1)
 local hover_button_color        = vmath.vector3(0.6,0.6,0.6)
 local click_button_color        = vmath.vector3(0,0.6,0)
