@@ -1,0 +1,25 @@
+local toxic_level;
+
+function init(self)
+    toxic_level = gui.get_node("toxic_level")
+
+    gui.set_fill_angle(toxic_level, 0)
+end
+
+function final(self)
+end
+
+function update(self, dt)
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("toxic_level_change") then
+        gui.set_fill_angle(toxic_level, message.toxic_level / 100 * 360)
+    end
+end
+
+function on_input(self, action_id, action)
+end
+
+function on_reload(self)
+end

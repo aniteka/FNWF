@@ -6,6 +6,9 @@ local in_menu = true
 local time_multiply = 2
 local time_from_game_start = 0
 local night_save_name = "night.floppa_saves"
+local toxic_level = 0; -- max: 100
+local toxic_level_adder = 10
+local toxic_level_subs = 5
 
 jumpscare_settings = {
 	duration = 0.5;
@@ -31,6 +34,7 @@ end
 
 function update(self, dt)
 	timer_update(self, dt)
+	toxic_level_update(dt)
 end
 
 function on_message(self, message_id, message, sender)
@@ -163,6 +167,11 @@ function back_to_menu()
 
 	time_from_game_start = 0
 
+	toxic_level = 0
+
+	cameras_load = false
+	mask_putted = false
+
 	msg.post("/jumpscare", "disable")
 	msg.post("/puted_on_musk", "disable")
 	msg.post("/timer", "disable")
@@ -230,5 +239,19 @@ function check_of_saves()
 	if not sys.load(night_save_name).night then
 		sys.save(night_save_name, {night = 1})
 		print("Work")
+	end
+end
+
+function toxic_level_update(dt)
+	if mask_putted then
+		toxic_level = toxic_level + toxic_level_adder * dt
+		msg.post("office:/toxic_level#toxic_level", "toxic_level_change",{toxic_level = toxic_level})
+	elseif not mask_putted and not in_menu then
+		toxic_level = toxic_level - ((toxic_level < 0) and 0 or toxic_level_subs * dt)
+		msg.post("office:/toxic_level#toxic_level", "toxic_level_change",{toxic_level = toxic_level})
+	end
+
+	if toxic_level >= 100 then
+		back_to_menu()
 	end
 end
