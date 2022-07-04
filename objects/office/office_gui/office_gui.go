@@ -1,6 +1,6 @@
 components {
-  id: "toxic_level"
-  component: "/objects/office/toxic_mask_level/toxic_level.gui"
+  id: "office_gui"
+  component: "/objects/office/office_gui/office_gui.gui"
   position {
     x: 0.0
     y: 0.0

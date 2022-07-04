@@ -4,7 +4,7 @@ instances {
   prototype: "/objects/cameras/cameras.go"
   position {
     x: 342.0
-    y: -12.0
+    y: 39.0
     z: 0.9
   }
   rotation {

@@ -80,8 +80,8 @@ instances {
   }
 }
 instances {
-  id: "toxic_level"
-  prototype: "/objects/office/toxic_mask_level/toxic_level.go"
+  id: "office_gui"
+  prototype: "/objects/office/office_gui/office_gui.go"
   position {
     x: 0.0
     y: 0.0

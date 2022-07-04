@@ -1,4 +1,4 @@
-# Five Night With Floppa
+# Five Nights With Floppa
 
 A Floppa version of [Five Nights at Freddy's](https://store.steampowered.com/app/319510/Five_Nights_at_Freddys/?l=polish)<br>
 It was made using Defold and Lua
