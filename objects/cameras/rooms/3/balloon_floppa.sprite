@@ -1,0 +1,4 @@
+tile_set: "/objects/cameras/rooms/3/room3.atlas"
+default_animation: "floppa_with_baloon_just_floppa"
+material: "/builtins/materials/sprite.material"
+blend_mode: BLEND_MODE_ALPHA

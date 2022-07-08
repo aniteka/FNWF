@@ -16,12 +16,12 @@ function on_message(self, message_id, message, sender)
 
 	elseif message_id == hash("way_point") then
 		-- Animatronics in enabled_camera check
-		if message.way_point == enabled_camera then
-			msg.post(message.sprite_name.. enabled_camera, "enable")
-		else
-			msg.post(message.sprite_name.. enabled_camera, "disable")
-
-
+		if message.way_point ~= -1 then
+			if message.way_point == enabled_camera then
+				msg.post(message.sprite_name.. enabled_camera, "enable")
+			else
+				msg.post(message.sprite_name.. enabled_camera, "disable")
+			end
 		end
 	end
 end
@@ -50,4 +50,5 @@ end
 ---@author Check animatronics existing in this camera
 function check_animatronics_existing()
 	msg.post("animatronics:/animatronics#floppa_in_bucket", "get_way_point")
+	msg.post("animatronics:/animatronics#balloon_floppa", "get_way_point")
 end

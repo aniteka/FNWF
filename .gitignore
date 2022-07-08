@@ -10,3 +10,8 @@ Thumbs.db
 builtins
 .idea
 *.floppa_saves
+.vs
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
