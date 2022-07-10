@@ -81,7 +81,7 @@ end
 
 function play_jumpscare(sprite_name)
 	if mask_putted then
-		msg.post("animatronics:/animatronics#floppa_in_bucket", "mask_used")
+		msg.post("animatronics:/floppa_in_bucket", "mask_used")
 		return
 	end
 	msg.post("/jumpscare", "enable")

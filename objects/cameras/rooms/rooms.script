@@ -1,10 +1,34 @@
 ---@type number
 enabled_camera = 1
+local interference = {
+	used = false;
+	using_time_max = 1;
+	using_time = 0;
+}
+
+local function play_interference()
+	if interference.used then
+		interference.using_time = 0
+		return
+	end
+
+	local cam_pos = go.get_position("/cameras")
+	cam_pos.z = 1
+	go.set_position(cam_pos, "/cameras")
+
+	local tv_pos = go.get_position("/interference")
+	tv_pos.z = 0.99
+	go.set_position(tv_pos, "/interference")
+
+	interference.used = true
+end
 
 ---@author Check animatronics existing in this camera
 local function check_animatronics_existing()
 	msg.post("animatronics:/floppa_in_bucket", "get_way_point")
 	msg.post("animatronics:/balloon_floppa", "get_way_point")
+
+	play_interference()
 end
 
 ---@param cam_number number
@@ -36,6 +60,21 @@ function init(self)
 end
 
 function update(self, dt)
+	if interference.used then
+		interference.using_time = interference.using_time + dt;
+		if interference.using_time > interference.using_time_max then
+			interference.used = false;
+			interference.using_time = 0;
+
+			local cam_pos = go.get_position("/cameras")
+			cam_pos.z = 0.9
+			go.set_position(cam_pos, "/cameras")
+
+			local tv_pos = go.get_position("/interference")
+			tv_pos.z = -2
+			go.set_position(tv_pos, "/interference")
+		end
+	end
 end
 
 function on_message(self, message_id, message, sender)
@@ -46,6 +85,7 @@ function on_message(self, message_id, message, sender)
 		-- Animatronics in enabled_camera check
 		if message.way_point == enabled_camera then
 			msg.post(message.sprite_name.. enabled_camera, "enable")
+			play_interference()
 		else
 			msg.post(message.sprite_name.. enabled_camera, "disable")
 		end
