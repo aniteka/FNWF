@@ -1,37 +1,14 @@
 ---@type number
 enabled_camera = 1
 
-function init(self)
-	sprite.set_hflip("/fib2#floppa_in_bucket", true)
-
-	check_animatronics_existing()
+---@author Check animatronics existing in this camera
+local function check_animatronics_existing()
+	msg.post("animatronics:/floppa_in_bucket", "get_way_point")
+	msg.post("animatronics:/balloon_floppa", "get_way_point")
 end
-
-function update(self, dt)
-end
-
-function on_message(self, message_id, message, sender)
-	if message_id == hash("change_camera") then
-		change_camera(message.cam_number)
-
-	elseif message_id == hash("way_point") then
-		-- Animatronics in enabled_camera check
-		if message.way_point ~= -1 then
-			if message.way_point == enabled_camera then
-				msg.post(message.sprite_name.. enabled_camera, "enable")
-			else
-				msg.post(message.sprite_name.. enabled_camera, "disable")
-			end
-		end
-	end
-end
-
-
-
-
 
 ---@param cam_number number
-function change_camera(cam_number)
+local function change_camera(cam_number)
 	-- Turn off previous camera
 	local vec_prev = go.get("/r".. enabled_camera, "position")
 	vec_prev.z = -10
@@ -47,8 +24,30 @@ function change_camera(cam_number)
 	check_animatronics_existing()
 end
 
----@author Check animatronics existing in this camera
-function check_animatronics_existing()
-	msg.post("animatronics:/animatronics#floppa_in_bucket", "get_way_point")
-	msg.post("animatronics:/animatronics#balloon_floppa", "get_way_point")
+
+
+
+
+
+function init(self)
+	sprite.set_hflip("/fib2#floppa_in_bucket", true)
+
+	check_animatronics_existing()
+end
+
+function update(self, dt)
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("change_camera") then
+		change_camera(message.cam_number)
+
+	elseif message_id == hash("way_point") then
+		-- Animatronics in enabled_camera check
+		if message.way_point == enabled_camera then
+			msg.post(message.sprite_name.. enabled_camera, "enable")
+		else
+			msg.post(message.sprite_name.. enabled_camera, "disable")
+		end
+	end
 end

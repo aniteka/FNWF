@@ -1,7 +1,7 @@
 name: "animatronics"
 scale_along_z: 0
 embedded_instances {
-  id: "animatronics"
+  id: "floppa_in_bucket"
   data: "components {\n"
   "  id: \"floppa_in_bucket\"\n"
   "  component: \"/objects/animatronics/floppa_in_bucket.script\"\n"
@@ -17,7 +17,27 @@ embedded_instances {
   "    w: 1.0\n"
   "  }\n"
   "}\n"
-  "components {\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "balloon_floppa"
+  data: "components {\n"
   "  id: \"balloon_floppa\"\n"
   "  component: \"/objects/animatronics/balloon_floppa.script\"\n"
   "  position {\n"

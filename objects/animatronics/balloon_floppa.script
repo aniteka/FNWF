@@ -1,6 +1,15 @@
 local bf_sprite_name = "bf"
 local bf_way_point_index = 1
 
+local function send_way_point_to_cameras_rooms_script()
+    msg.post("cameras:/r3#room3", "play_animation", {id = hash(bf_sprite_name..bf_way_point_index)})
+end
+
+
+
+
+
+
 function init(self)
     timer.delay(4, true, function()
         bf_way_point_index = bf_way_point_index + 1
@@ -15,12 +24,4 @@ function on_message(self, message_id, message, sender)
     if message_id == hash("get_way_point") then
         send_way_point_to_cameras_rooms_script()
     end
-end
-
-function send_way_point_to_cameras_rooms_script()
-    msg.post("cameras:/rooms#rooms", "way_point", {
-        sprite_name = "";
-        way_point = -1;
-    })
-    msg.post("cameras:/r3#room3", "play_animation", {id = hash(bf_sprite_name..bf_way_point_index)})
 end

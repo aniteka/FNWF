@@ -12,9 +12,40 @@ local fib_hard_changer_values = {
 local hard_value = 0
 local night_save_name = "night.floppa_saves"
 
-function get_floppa_in_bucket_way_point()
+local function get_floppa_in_bucket_way_point()
 	return fib_way[fib_way_point_index]
 end
+
+local function send_way_point_to_cameras_rooms_script()
+	msg.post("cameras:/rooms#rooms", "way_point", {
+		sprite_name = "fib";
+		way_point = get_floppa_in_bucket_way_point();
+	})
+end
+
+local function send_message_to_offices_doors()
+	if get_floppa_in_bucket_way_point() == 0 then
+		sprite.play_flipbook("office:/after_door#left_door", "floppa_in_bucket")
+	else
+		sprite.play_flipbook("office:/after_door#left_door", "door_nothing")
+	end
+end
+
+local function send_message_to_main_play_jumpscare()
+	msg.post("main:/scripts#main", "play_jumpscare", {sprite_name = "floppa_in_bucket"})
+end
+
+local function move_next_camera()
+	if get_floppa_in_bucket_way_point() == nil then 	send_message_to_main_play_jumpscare()
+	end
+	send_message_to_offices_doors()
+	send_way_point_to_cameras_rooms_script()
+end
+
+
+
+
+
 
 function init(self)
 	hard_value = sys.load(night_save_name).night or 0
@@ -59,30 +90,4 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("mask_used") then
 		fib_way_point_index = 1
 	end
-end
-
-function send_way_point_to_cameras_rooms_script()
-	msg.post("cameras:/rooms#rooms", "way_point", {
-		sprite_name = "fib";
-		way_point = get_floppa_in_bucket_way_point();
-	})
-end
-
-function send_message_to_offices_doors()
-	if get_floppa_in_bucket_way_point() == 0 then
-		sprite.play_flipbook("office:/after_door#left_door", "floppa_in_bucket")
-	else
-		sprite.play_flipbook("office:/after_door#left_door", "door_nothing")
-	end
-end
-
-function send_message_to_main_play_jumpscare()
-	msg.post("main:/scripts#main", "play_jumpscare", {sprite_name = "floppa_in_bucket"})
-end
-
-function move_next_camera()
-	if get_floppa_in_bucket_way_point() == nil then 	send_message_to_main_play_jumpscare()
-	end
-	send_message_to_offices_doors()
-	send_way_point_to_cameras_rooms_script()
 end

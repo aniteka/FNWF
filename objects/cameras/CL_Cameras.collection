@@ -137,7 +137,7 @@ embedded_instances {
   position {
     x: 277.45
     y: 353.171
-    z: 1.0
+    z: 0.91
   }
   rotation {
     x: 0.0
@@ -208,7 +208,7 @@ embedded_instances {
   position {
     x: 551.069
     y: 345.833
-    z: 1.0
+    z: 0.91
   }
   rotation {
     x: 0.0
@@ -279,7 +279,7 @@ embedded_instances {
   position {
     x: 586.77
     y: 451.282
-    z: 1.0
+    z: 0.91
   }
   rotation {
     x: 0.0
@@ -350,7 +350,7 @@ embedded_instances {
   position {
     x: 490.272
     y: 343.59
-    z: 1.0
+    z: 0.91
   }
   rotation {
     x: 0.0
