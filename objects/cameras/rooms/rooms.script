@@ -2,11 +2,12 @@
 enabled_camera = 1
 local interference = {
 	used = false;
-	using_time_max = 1;
+	using_time_max = 0.5;
 	using_time = 0;
 }
 
 local function play_interference()
+	sound.play("/interference#tv_noice", {})
 	if interference.used then
 		interference.using_time = 0
 		return
