@@ -7,6 +7,7 @@ local night_save_name = "night.floppa_saves"
 local toxic_level = 0; -- max: 100
 local toxic_level_adder = 10
 local toxic_level_subs = 5
+local dead_screen_time = 4
 
 jumpscare_settings = {
 	duration = 0.5;
@@ -196,10 +197,16 @@ function back_to_menu()
 	msg.post("/timer", "disable")
 	msg.post("/gui", "disable")
 
-	msg.post("/scripts#Menu", "load")
-	msg.post("/scripts#Menu", "init")
-	msg.post("/scripts#Menu", "enable")
-	in_menu = true
+
+	go.set_position(vmath.vector3(0,0,0), "/dead_screen")
+	sound.play("/dead_screen#dead_sound")
+	timer.delay(dead_screen_time, false, function()
+		go.set_position(vmath.vector3(0,0,-10), "/dead_screen")
+		msg.post("/scripts#Menu", "load")
+		msg.post("/scripts#Menu", "init")
+		msg.post("/scripts#Menu", "enable")
+		in_menu = true
+	end)
 end
 
 function continue_game()
