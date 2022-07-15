@@ -34,7 +34,7 @@ function final(self)
 end
 
 function update(self, dt)
-	timer_update(self, dt)
+	if not in_menu then timer_update(self, dt) end
 	toxic_level_update(dt)
 end
 
@@ -167,6 +167,7 @@ function updown_camera(mouse_x_pos, mouse_y_pos)
 end
 
 function back_to_menu()
+	in_menu = true
 	msg.post("/scripts#Office", "unload")
 	msg.post("/scripts#Cameras", "unload")
 	msg.post("/scripts#Animatronics", "unload")
@@ -206,7 +207,6 @@ function back_to_menu()
 		msg.post("/scripts#Menu", "load")
 		msg.post("/scripts#Menu", "init")
 		msg.post("/scripts#Menu", "enable")
-		in_menu = true
 	end)
 end
 
