@@ -8,6 +8,7 @@ local toxic_level = 0; -- max: 100
 local toxic_level_adder = 30
 local toxic_level_subs = 5
 local dead_screen_time = 4
+local window_size = {x = 1280, y = 720}
 
 jumpscare_settings = {
 	duration = 0.5;
@@ -115,7 +116,7 @@ end
 
 local prev_y_pos_mask = 1000
 function put_on_mask(mouse_x_pos, mouse_y_pos)
-	local window_x,window_y = window.get_size()
+	local window_x,window_y = window_size.x, window_size.y
 	local cond =
 			mouse_y_pos < window_y / 10 and
 			prev_y_pos_mask >= window_y / 10 and
@@ -145,7 +146,7 @@ end
 
 local prev_y_pos_camera = 1000
 function updown_camera(mouse_x_pos, mouse_y_pos)
-	local window_x,window_y = window.get_size()
+	local window_x,window_y = window_size.x, window_size.y
 	local cond =
 			mouse_y_pos < window_y / 10 and
 			prev_y_pos_camera >= window_y / 10 and
