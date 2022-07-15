@@ -108,7 +108,7 @@ embedded_instances {
   "  position {\n"
   "    x: 0.0\n"
   "    y: 0.0\n"
-  "    z: 0.0\n"
+  "    z: 0.91\n"
   "  }\n"
   "  rotation {\n"
   "    x: 0.0\n"
@@ -121,7 +121,7 @@ embedded_instances {
   position {
     x: 640.0
     y: 480.0
-    z: 0.91
+    z: 0.0
   }
   rotation {
     x: 0.0
@@ -148,7 +148,7 @@ embedded_instances {
   "  position {\n"
   "    x: 500.0\n"
   "    y: 375.0\n"
-  "    z: 0.0\n"
+  "    z: 0.92\n"
   "  }\n"
   "  rotation {\n"
   "    x: 0.0\n"
@@ -161,7 +161,7 @@ embedded_instances {
   position {
     x: 0.0
     y: 1000.0
-    z: 0.92
+    z: 0.0
   }
   rotation {
     x: 0.0
@@ -398,6 +398,46 @@ embedded_instances {
   scale3 {
     x: 1.28
     y: 0.96
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "tablet"
+  data: "embedded_components {\n"
+  "  id: \"sprite\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"tile_set: \\\"/objects/main/tablet/tablet.atlas\\\"\\n"
+  "default_animation: \\\"tablet_open\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "blend_mode: BLEND_MODE_ALPHA\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 300.396\n"
+  "    y: 224.596\n"
+  "    z: 1.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 2420.0
+    y: -1018.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 2.14
+    y: 1.61
     z: 1.0
   }
 }

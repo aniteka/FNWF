@@ -155,12 +155,24 @@ function updown_camera(mouse_x_pos, mouse_y_pos)
 	if cond then
 		if not cameras_load and not mask_putted then
 			cameras_load = true
-			msg.post("/scripts#Office", "disable")
-			msg.post("/scripts#Cameras", "enable")
+
+			go.set_position(vmath.vector3(0,0,0), "/tablet")
+			sprite.play_flipbook("/tablet#sprite", "tablet_open", function()
+				go.set_position(vmath.vector3(0,0,-10), "/tablet")
+				msg.post("/scripts#Office", "disable")
+				msg.post("/scripts#Cameras", "enable")
+			end, {})
+
 		elseif cameras_load and not mask_putted then
 			cameras_load = false
 			msg.post("/scripts#Cameras", "disable")
 			msg.post("/scripts#Office", "enable")
+
+			go.set_position(vmath.vector3(0,0,0), "/tablet")
+			sprite.play_flipbook("/tablet#sprite", "tablet_close", function()
+				go.set_position(vmath.vector3(0,0,-10), "/tablet")
+			end, {})
+
 		end
 	end
 	prev_y_pos_camera = mouse_y_pos
