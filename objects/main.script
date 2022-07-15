@@ -5,7 +5,7 @@ local time_multiply = 2
 local time_from_game_start = 0
 local night_save_name = "night.floppa_saves"
 local toxic_level = 0; -- max: 100
-local toxic_level_adder = 10
+local toxic_level_adder = 30
 local toxic_level_subs = 5
 local dead_screen_time = 4
 

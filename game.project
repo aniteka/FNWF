@@ -1,6 +1,6 @@
 [project]
 title = FNWF
-custom_resources = /asset/videos/test.webm
+custom_resources = /asset/videos/test.webm, /asset/videos/floppa_menu_video.webm
 
 [bootstrap]
 main_collection = /main/main.collectionc
