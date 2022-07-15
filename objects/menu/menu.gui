@@ -3,6 +3,14 @@ fonts {
   name: "hacked"
   font: "/asset/fonts/hacked/hacked.font"
 }
+fonts {
+  name: "for_title"
+  font: "/objects/menu/for_title.font"
+}
+fonts {
+  name: "for_buttons"
+  font: "/objects/menu/for_buttons.font"
+}
 background_color {
   x: 0.0
   y: 0.0
@@ -12,7 +20,7 @@ background_color {
 nodes {
   position {
     x: 250.0
-    y: 550.0
+    y: 280.0
     z: 0.0
     w: 1.0
   }
@@ -24,7 +32,7 @@ nodes {
   }
   scale {
     x: 1.5
-    y: 0.8
+    y: 0.5
     z: 1.0
     w: 1.0
   }
@@ -98,7 +106,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "CONTINUE"
-  font: "hacked"
+  font: "for_buttons"
   id: "continue_t"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -131,7 +139,7 @@ nodes {
 nodes {
   position {
     x: 250.0
-    y: 400.0
+    y: 210.0
     z: 0.0
     w: 1.0
   }
@@ -143,7 +151,7 @@ nodes {
   }
   scale {
     x: 1.5
-    y: 0.8
+    y: 0.5
     z: 1.0
     w: 1.0
   }
@@ -217,7 +225,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "NEW GAME"
-  font: "hacked"
+  font: "for_buttons"
   id: "new_game_t"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -250,7 +258,7 @@ nodes {
 nodes {
   position {
     x: 250.0
-    y: 250.0
+    y: 140.0
     z: 0.0
     w: 1.0
   }
@@ -262,7 +270,7 @@ nodes {
   }
   scale {
     x: 1.5
-    y: 0.8
+    y: 0.5
     z: 1.0
     w: 1.0
   }
@@ -336,7 +344,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "OPTIONS"
-  font: "hacked"
+  font: "for_buttons"
   id: "options_t"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -369,7 +377,7 @@ nodes {
 nodes {
   position {
     x: 250.0
-    y: 100.0
+    y: 70.0
     z: 0.0
     w: 1.0
   }
@@ -381,7 +389,7 @@ nodes {
   }
   scale {
     x: 1.5
-    y: 0.8
+    y: 0.5
     z: 1.0
     w: 1.0
   }
@@ -455,7 +463,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "EXIT"
-  font: "hacked"
+  font: "for_buttons"
   id: "text"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -482,6 +490,72 @@ nodes {
   shadow_alpha: 1.0
   template_node_child: false
   text_leading: 1.0
+  text_tracking: 0.0
+  custom_type: 0
+}
+nodes {
+  position {
+    x: 250.0
+    y: 514.0
+    z: 0.0
+    w: 1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  size {
+    x: 300.0
+    y: 400.0
+    z: 0.0
+    w: 1.0
+  }
+  color {
+    x: 0.9490196
+    y: 0.9490196
+    z: 0.9490196
+    w: 1.0
+  }
+  type: TYPE_TEXT
+  blend_mode: BLEND_MODE_ALPHA
+  text: "Five   \n"
+  "Nights \n"
+  "With   \n"
+  "Floppa "
+  font: "for_title"
+  id: "title"
+  xanchor: XANCHOR_NONE
+  yanchor: YANCHOR_NONE
+  pivot: PIVOT_CENTER
+  outline {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  shadow {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  adjust_mode: ADJUST_MODE_FIT
+  line_break: false
+  layer: ""
+  inherit_alpha: true
+  alpha: 1.0
+  outline_alpha: 1.0
+  shadow_alpha: 1.0
+  template_node_child: false
+  text_leading: 0.7
   text_tracking: 0.0
   custom_type: 0
 }
